@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+     <!-- e finaliza por --> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
+
+     <!-- e finaliza por --> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    
+     <!-- e finaliza por --> 
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script><script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/style.css">
+    
+    <title>Estrutura de Dados 2</title>
+</head>
+<body>
+    {% block content %}
+    
+        <div class="pos-f-t">
+                <div class="collapse" id="navbarToggleExternalContent">
+                  <div class="bg-dark p-4">
+                    <h5 class="text-white h4">Search Methods Comparator</h5>
+                    
+                  </div>
+                </div>
+                    <nav class="navbar navbar-dark bg-dark">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="">Trabalho 1</span>
+                    </button>
+                </nav>
+              </div>
+    <br> <br>
+    <h1 style="text-align:center">Comparador de Métodos de Busca</h1>
+    <br> <br> <br>
+
+    <div class="container"></div>
+        <div class="row">
+
+            <div class="col-sm">
+                <canvas id="barChart" width="380" height="200" style="margin-inline-start:40px"></canvas>
+            </div>
+            <div class="col-sm">
+                
+                <div class="row">
+
+                
+                <div class="card text-white bg-secondary mb-3" style="max-width: 30rem;margin-inline-start: 80px">
+                    
+                    <div class="card-header">Número de Interações</div>
+                    <div class="card-body">
+                        <p class="card-text" id="Params1"></p>
+                        <p class="card-text" id="Params2"></p>
+                </div>
+            </div>
+            <div class="row">
+                    <div class="card text-white bg-secondary mb-3" style="max-width: 30rem;margin-inline-start: 80px">
+                        
+                        <div class="card-header">Entradas</div>
+                        <div class="card-body">
+                            <p class="card-text" id="Params3"></p>
+                            <p class="card-text" id="Params4"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="margin-top:-10px">
+            <div class="row">
+                <div class="col-sm">
+
+                    <form action="/" method="POST">
+
+                        <div class="form-row">
+                            <div class="col">
+                                <br>
+                                <legend>Valor máximo do intervalo</legend>
+                                <input type="number" class="form-control" placeholder="Tamanho do array ordenado" name='max' min="0" max="10000001" required="required">                   
+                            </div>
+                            <div class="col">
+                                <br>
+                                <legend>Insira a chave a ser buscada</legend>
+                                <input type="number" class="form-control"  required="required" placeholder="Chave procurada" name="key" min="0" max="10000001">
+                            </div>
+                          </div>
+                          <div class="form-row" style="margin-top:10px">
+                                <div class="col">
+                                    <br>
+                                    <legend>Primeiro Método</legend>
+                                    <select name="primeiraBusca" required class ="custom-select" aria-placeholder="Selecione">
+            
+                                        <option value="Linear">Linear</option>
+                                        <option value="Sentinela">Sentinela</option>
+                                        <option value="Indexada">Indexada</option>
+                                        <option value="Binaria">Binaria</option>
+                                        <option value="Interpolação">Interpolação</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                        <br>
+                                        <legend>Segundo Método</legend>
+                                        <select name="segundaBusca" required class ="custom-select" aria-placeholder="Selecione">
+                                            
+                                            <option value="Linear">Linear</option>
+                                            <option value="Sentinela">Sentinela</option>
+                                            <option value="Indexada">Indexada</option>
+                                            <option value="Binaria">Binaria</option>
+                                            <option value="Interpolação">Interpolação</option>
+                                        </select>
+                                        </div>                   
+                                </datalist>
+
+
+                                </div>
+                                <input class="btn btn-outline-success" id="loadData" style="margin-bottom:20px; margin-top: 10px;width: 150px" type="submit" value="Submit">
+                                </form>
+                          </div>
+            </div>
+        </div>
+
+        <script>
+            const chart = document.getElementById("lineChart");
+
+            var data = []
+
+            var url = window.location.pathname;
+
+            if(url == '/'){
+                console.log('ads');
+                data = JSON.parse({{ value | tojson }});
+                console.log(data);
+            }
+
+            label = []
+            parameters = []
+            label[0] = {{searchMeth1 | tojson}};
+            label[1] = {{searchMeth2 | tojson}};
+            parameters[0] = {{ max | tojson}};
+            parameters[1] = {{ key | tojson }};
+
+            if(parameters[0] == -1 && parameters[1] == -1){
+                alert('O valor da chave tem que ser menor que o valor máximo do array');
+            }
+        
+
+            document.getElementById('Params1').innerHTML = label[0] + ": " + data[0];
+            document.getElementById('Params2').innerHTML = label[1] + ": " + data[1];
+            document.getElementById('Params3').innerHTML = 'Tamanho do Array: ' + parameters[0];
+            document.getElementById('Params4').innerHTML = 'Chave Procurada: ' + parameters[1];
+            
+
+            const barCtx = document.getElementById("barChart");
+
+            Chart.defaults.scale.ticks.beginAtZero = true;
+
+            let barChart = new Chart(barCtx, {
+                type: 'bar',
+                data: {
+                    
+                    labels: label,
+                    datasets: [{
+                        label: 'Número de interações',
+                        data: data,
+                        backgroundColor: [
+                            'rgba(75, 75, 192, 0.4)',
+                            '#00FF00'
+                            ],
+                        borderWidth: 2,
+                        borderColor: 'rgba(75, 75, 192, 0.4)',
+                    }]
+                }
+            });
+
+        </script>
+    
+    {% endblock %}
+</body>
+</html>
